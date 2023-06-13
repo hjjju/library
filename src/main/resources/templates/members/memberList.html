@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--  <title>memberList</title>-->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/library.css" th:href="@{/css/library.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<div th:replace="~{./common/header :: headerFragment}"></div>
+<body>
+
+<div class="memberListContainer">
+
+    <table class="memberTable">
+        <thead>
+        <tr>
+            <th class="tableTitle">#</th>
+            <th class="tableTitle">이름</th>
+            <th class="tableTitle">핸드폰번호</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="member : ${members}">
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.name}"></td>
+            <td th:text="${member.phone}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+   <!-- <th:block th:each="page:${#numbers.sequence(startPage,endPage)}">
+        <a th:if="${page != nowPage}" th:href="@{/board/memberList(page=${page-1})}" th:text ="${page}"></a>
+        <strong th:if="${page==nowPage}" th:text ="${page}" style="color:red"></strong>
+
+    </th:block>-->
+
+
+</div>
+
+
+
+
+</body>
+<div th:replace="~{./common/sideBar :: sideBarFragment}"></div>
+</html>

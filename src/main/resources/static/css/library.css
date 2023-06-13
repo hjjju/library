@@ -1,0 +1,174 @@
+/* Rectangle 2 */
+
+#lentButton{
+font-size: 60px;
+position: absolute;
+width: 497px;
+height: 373px;
+left: 390px;
+top: 202px;
+background: #FFA7D6;
+cursor: pointer;
+}
+#returnButton{
+font-size: 60px;
+position: absolute;
+width: 497px;
+height: 373px;
+left: 917px;
+top: 200px;
+cursor: pointer;
+
+background: #F9F871;
+}
+
+.textLogo{
+position: absolute;
+width: 140px;
+height: 22px;
+left: 195px;
+top: 42px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+/* identical to box height */
+color: #000000;
+
+}
+
+.sideBar{
+
+/* Rectangle 1 */
+
+
+position: absolute;
+width: 187px;
+height: 675px;
+left: 172px;
+top: 114px;
+
+background:#FFACB5;
+}
+.line1{
+
+position: absolute;
+width: 1268px;
+height: 0px;
+left: 172px;
+top: 113.5px;
+z-index: 3;
+border: 1px solid #000000;
+transform: rotate(0.02deg);
+}
+.footBox{
+/* Rectangle 26 */
+
+
+position: absolute;
+width: 1263px;
+height: 191px;
+left: 172px;
+top: 789px;
+z-index: 1;
+background: #F5F5F5;
+}
+
+.footAddress{
+position: absolute;
+width: 585px;
+height: 19px;
+left: 302px;
+top: 40px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #000000;
+
+
+}
+.bottomLine{
+position: absolute;
+width: 1263px;
+height: 0px;
+left: 172px;
+top: 789px;
+z-index: 3;
+border: 1px solid #000000;
+}
+
+/*member*/
+.regiBox{
+/* Rectangle 8 */
+
+
+position: absolute;
+width: 806px;
+height: 423px;
+left: 528px;
+top: 190px;
+
+background: #EBF2F5;
+}
+.homeIcon{
+position: absolute;
+left: 70.04%;
+right: 3.89%;
+top: 4.54%;
+bottom: 90.33%;
+cursor: pointer;
+}
+.form-group{
+margin-left:240px;
+margin-top:120px;
+
+}
+
+.addMemberButton{
+    margin-left:13px;
+    margin-top:30px;
+    width:120px;
+    height:60px;
+}
+.addMemberButton.cancel{
+    background-color:#F9F871;
+
+}
+.addMemberButton.ok{
+    background-color:#FFBC82;
+}
+.createTable{
+  border-collapse: separate;
+  border-spacing: 10px 20px;
+}
+.memberListContainer{
+    width: 700px;
+    margin-left:30%;
+    margin-top:10%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+}
+.memberListContainer table{
+    width:100%;
+    font-size: 17px;
+    line-height: 30px;
+
+}
+
+.tableTitle{
+   font-size: 17px;
+}
+.memberListContainer, th,td{
+border-bottom: 1px solid #444444;
+    padding: 10px;
+
+}
+
+
+

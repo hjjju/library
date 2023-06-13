@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lagn="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/library.css" th:href="@{/css/library.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!--  <title>main</title>-->
+</head>
+<div th:replace="~{./common/header :: headerFragment}"></div>
+
+<div th:replace="~{./common/sideBar :: sideBarFragment}"></div>
+<!--<body class="whole">
+<div>
+    <div class="line1"></div>
+    <div class="textLogo">Ashley-library</div>
+    <div class="sideBar">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/members/new">회원등록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">회원목록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">도서등록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled">도서목록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled">월별대여횟수</a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+    &lt;!&ndash;<button class="lentButton" >대여</button>&ndash;&gt;
+    &lt;!&ndash;<button class="returnButton">반납</button>&ndash;&gt;
+</body>-->
+<input type="button" value="Check Out" id ="lentButton" onclick="location.href='/book/checkOut'" class="lentButton" th:attrappend="class=${'' + cssStyle}"/>
+<input type="button" value="Return"  id="returnButton" onclick="location.href='/book/return'" class="returnButton" th:attrappend="class=${''+ cssStyle}"/>
+<!--<div class="bottomLine"></div>
+<div class="footBox">
+    <p class="footAddress">경기 수원시 권선구 삼천병마로1566번길 11 쌍용 플래티넘 단지내 상가 210호
+    <p>
+    </p>
+</div>-->
+<div th:replace="~{./common/footer :: footerFragment}"></div>
+</html>

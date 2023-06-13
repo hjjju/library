@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/library.css" th:href="@{/css/library.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div th:replace="~{./common/header :: headerFragment}"></div>
+<div th:replace="~{./common/sideBar :: sideBarFragment}"></div>
+<div class="regiBox">
+</div>
+
+</body>
+
+<div th:replace="~{./common/footer :: footerFragment}"></div>
+</html>
