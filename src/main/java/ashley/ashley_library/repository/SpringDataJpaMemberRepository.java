@@ -4,6 +4,7 @@ package ashley.ashley_library.repository;
 import ashley.ashley_library.domain.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Lon
     @Override
     Optional<Member> findById(Long aLong);
 
-    @Override
-    Page<Member> findAll(Pageable pageable);
+//    @Override
+//    Page<Member> findAll(Pageable pageable);
 
 }

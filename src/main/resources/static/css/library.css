@@ -118,9 +118,9 @@ background: #EBF2F5;
 }
 .homeIcon{
 position: absolute;
-left: 70.04%;
+left: 1300px;
 right: 3.89%;
-top: 4.54%;
+top: 60px;
 bottom: 90.33%;
 cursor: pointer;
 }
@@ -149,8 +149,8 @@ margin-top:120px;
 }
 .memberListContainer{
     width: 700px;
-    margin-left:30%;
-    margin-top:10%;
+    margin-left: 480px;
+    margin-top:200px;
     border-top: 1px solid #444444;
     border-collapse: collapse;
 }
@@ -169,6 +169,4 @@ border-bottom: 1px solid #444444;
     padding: 10px;
 
 }
-
-
 

@@ -12,7 +12,41 @@
 <div th:replace="~{./common/header :: headerFragment}"></div>
 <body>
 <div class="regiBox">
+  <div class="form-group">
+    <form action="/book/bookRegistration" method="post">
 
+      <table class="createTable">
+        <tr>
+          <td>
+            <label for="bookCode">ISBN</label>
+          </td>
+          <td>
+            <input type="bookCode" id="bookCode" name="bookCode" placeholder="바코드를 찍어주세요.">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="title">제목</label>
+          </td>
+          <td>
+            <input type="text" id="title" name="title" placeholder="자동으로 입력됩니다.">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="pub">출판사</label>
+          </td>
+          <td>
+            <input type="text" id="pub" name="pub" placeholder="자동으로 입력됩니다.">
+          </td>
+        </tr>
+
+
+      </table>
+      <button class="addMemberButton cancel" type="button" onclick="location.href='/'">취소</button>
+      <button class="addMemberButton ok" type="submit">등록</button>
+    </form>
+  </div>
 
 </div>
 

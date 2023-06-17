@@ -3,6 +3,7 @@ package ashley.ashley_library.repository;
 import ashley.ashley_library.domain.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;

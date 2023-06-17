@@ -12,6 +12,37 @@
 <div th:replace="~{./common/header :: headerFragment}"></div>
 
 <div th:replace="~{./common/sideBar :: sideBarFragment}"></div>
+
+<div class="regiBox">
+    <div class="form-group">
+        <form action="/book/bookRegistration" method="post">
+
+            <table class="createTable">
+                <tr>
+                    <td>
+                        <label for="bookCode">ISBN</label>
+                    </td>
+                    <td>
+                        <input type="bookCode" id="bookCode" name="bookCode" placeholder="바코드를 찍어주세요.">
+                    </td>
+                </tr>
+
+
+
+            </table>
+            <button class="addMemberButton cancel" type="button" onclick="location.href='/'">취소</button>
+            <button class="addMemberButton ok" type="submit">등록</button>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+
+
 </body>
 
 <div th:replace="~{./common/footer :: footerFragment}"></div>

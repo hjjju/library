@@ -5,7 +5,9 @@ import ashley.ashley_library.domain.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.transaction.annotation.SpringTransactionAnnotationParser;
 import org.springframework.transaction.annotation.Transactional;
 import ashley.ashley_library.repository.MemberRepository;
 
@@ -53,16 +55,29 @@ public class MemberService {
 
 
 
-    public Page<Member> findAll(Pageable pageable) {
+    public Page<Member> memberList(Pageable pageable,int pageNum) {
         //given
-        pageable = PageRequest.of(0, 10);
+        pageable = PageRequest.of(pageNum, 10,Sort.by(Sort.Direction.ASC,"name"));
         //when
+
         Page<Member> result = memberRepository.findAll(pageable);
 
-        System.out.println("총페이지: " + result.getTotalPages());
         //then
         return result;
 
     }
+//    public Page<Member> memberList(Pageable pageable) {
+//
+//        int page = pageable.getPageNumber(); //page 위치에 있는 값은 0부터 시작한다.
+//        System.out.println("page " +page);
+//        int pageLimit = 10; //한페이지에 보여줄 글 개수
+//        Page<Member> result = memberRepository.findAll(PageRequest.of(page,pageLimit,Sort.by(Sort.Direction.ASC,"name")));
+//
+//        //목록
+//
+//        //then
+//        return result;
+//
+//    }
 
 }
