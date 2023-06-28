@@ -46,18 +46,18 @@ public class MemberService {
     /**
      * 전체회원조회
      */
-    public List<Member> findMembers(){
+    public List<Member> findMembers() {
         return memberRepository.findAll();
     }
-    public Optional<Member> findOne(long memberId){
+
+    public Optional<Member> findOne(long memberId) {
         return memberRepository.findById(memberId);
     }
 
 
-
-    public Page<Member> memberList(Pageable pageable,int pageNum) {
+    public Page<Member> memberList(Pageable pageable, int pageNum) {
         //given
-        pageable = PageRequest.of(pageNum, 10,Sort.by(Sort.Direction.ASC,"name"));
+        pageable = PageRequest.of(pageNum, 10, Sort.by(Sort.Direction.ASC, "name"));
         //when
 
         Page<Member> result = memberRepository.findAll(pageable);
@@ -66,18 +66,17 @@ public class MemberService {
         return result;
 
     }
-//    public Page<Member> memberList(Pageable pageable) {
-//
-//        int page = pageable.getPageNumber(); //page 위치에 있는 값은 0부터 시작한다.
-//        System.out.println("page " +page);
-//        int pageLimit = 10; //한페이지에 보여줄 글 개수
-//        Page<Member> result = memberRepository.findAll(PageRequest.of(page,pageLimit,Sort.by(Sort.Direction.ASC,"name")));
-//
-//        //목록
-//
-//        //then
-//        return result;
-//
-//    }
+
+    public Member memberDetail(Long id) {
+
+        Member member = memberRepository.findById(id).get();
+
+
+
+        System.out.println(memberRepository.findById(id).get().getName());
+
+        return memberRepository.findById(id).get(); //어떤 멤버를 불러올지지정
+
+    }
 
 }

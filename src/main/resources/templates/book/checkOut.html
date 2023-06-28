@@ -11,7 +11,43 @@
 <body>
 <div th:replace="~{./common/header :: headerFragment}"></div>
 <div th:replace="~{./common/sideBar :: sideBarFragment}"></div>
+<div class="line1"></div>
+<!--<div class="textLogo">Ashley-library</div>-->
 <div class="regiBox">
+    <div class="form-group">
+        <form action="/book/checkOut" method="post">
+            <table class="checkOutTable">
+                <tr>
+                    <td>
+                        <label for="isbn">ISBN</label>
+                    </td>
+                        <td>
+                            <input type="text" id="isbn" name="isbn" placeholder="바코드를 찍어주세요.">
+                        </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        <label for="phone">핸드폰 번호</label>
+                    </td>
+                    <td>
+                        <!-- null값 체크 -->
+                        <input id="phone" name="phone" placeholder="뒷번호 4자리를 입력해주세요.">
+                        <td>
+                           <button type="button" id="searchCkPhone">조회</button>
+                       </td>
+
+                    </td>
+                </tr>
+
+
+            </table>
+            <button class="addMemberButton cancel" type="button" onclick="location.href='/'">취소</button>
+            <button class="addMemberButton ok" type="submit">등록</button>
+        </form>
+    </div>
+
 </div>
 
 </body>

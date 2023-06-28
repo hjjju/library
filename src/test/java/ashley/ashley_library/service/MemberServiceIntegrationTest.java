@@ -99,7 +99,7 @@ class MemberServiceIntegrationTest {
 
         for (int i = 0; i < 20; i++) {
             Member m = new Member();
-            m.setName("유관순" + i);
+            m.setName("세종대왕" + i);
             memberRepository.save(m);
         }
 

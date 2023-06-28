@@ -10,6 +10,8 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <div th:replace="~{./common/header :: headerFragment}"></div>
+<div class="line1"></div>
+<!--<div class="textLogo">Ashley-library</div>-->
 <body>
 
 <div class="memberListContainer">
@@ -23,9 +25,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="memberList : ${memberList}">
-            <td th:text="${memberList.id}"></td>
-            <td th:text="${memberList.name}"></td>
+        <tr th:each="memberList,status: ${memberList}">
+            <!--<td th:text="${totalCnt-(nowPage-1) * 10 - status.index}"></td>-->
+            <td th:text="${(nowPage * 10) - 10 + status.count}"></td>
+            <td>
+                <a th:text="${memberList.name}" th:href="@{/members/memberDetail(id=${memberList.id})}"></a>
+            </td>
             <td th:text="${memberList.phone}"></td>
 
 
@@ -101,4 +106,5 @@
 
 </body>
 <div th:replace="~{./common/sideBar :: sideBarFragment}"></div>
+<div th:replace="~{./common/footer :: footerFragment}"></div>
 </html>

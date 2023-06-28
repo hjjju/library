@@ -17,18 +17,20 @@
 <div>
     <div class="line1"></div>
 <!--    <div class="textLogo">Ashley-library</div>-->
-
     <div class="regiBox">
-        <div class="createMember">
-            <form action="/members/new" method="post">
-
-                <table class="createTable memberVer">
+        <div class="memberDetail">
+            <!--<form action="/members/new" method="post">-->
+                <table class="memberDetailView">
                     <tr>
                         <td>
                             <label for="name">이름</label>
                         </td>
+
+                       <!-- <td th:text="${memberDetail.name}"></td>-->
                         <td>
-                            <input type="text" id="name" name="name" placeholder="이름을입력하세요">
+                        <input type="text" id="name" name="name" class="form-control" value="이름" th:value="${memberDetail.name}">
+                            <input type="hidden" th:value="${memberDetail.id}"/>
+
                         </td>
                     </tr>
                     <tr>
@@ -36,24 +38,24 @@
                             <label for="phone">전화번호</label>
                         </td>
                         <td>
-                            <input type="text" id="phone" name="phone" placeholder="전화번호를입력하세요">
+                            <input type="text" id="phone" name="phone" class="form-control" value="전화번호" th:value="${memberDetail.phone}">
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <label for="birth">생년월일</label>
-                        </td>
-                        <td>
-                            <input type="text" id="birth" name="birth" placeholder="생년월일 8자리">
-                        </td>
-                    </tr>
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <label for="birth">생년월일</label>-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--&lt;!&ndash;                            <input type="text" id="birth" name="birth" placeholder="생년월일 8자리">&ndash;&gt;-->
+<!--                            <h1 th:text="${memberDetail.birth}"></h1>-->
+<!--                        </td>-->
+<!--                    </tr>-->
 
                 </table>
                 <button class="addMemberButton cancel" type="button" onclick="location.href='/'">취소</button>
-                <button class="addMemberButton ok" type="submit">등록</button>
-        </form>
+                <button class="addMemberButton ok" type="submit">수정</button>
+            <!--</form>-->
         </div>
-
     </div>
 
 </div>

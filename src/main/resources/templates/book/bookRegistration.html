@@ -1,56 +1,77 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<!--  <title>도서등록</title>-->
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" media="all"
-        href="../static/css/library.css" th:href="@{/css/library.css}"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--  <title>도서등록</title>-->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/library.css" th:href="@{/css/library.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <div th:replace="~{./common/header :: headerFragment}"></div>
+<div class="line1"></div>
+<!--<div class="textLogo">Ashley-library</div>-->
 <body>
 <div class="regiBox">
-  <div class="form-group">
-    <form action="/book/bookRegistration" method="post">
+    <div class="form-group">
+        <form action="/book/bookRegistration" method="post">
+            <table class="bookCreateTable">
+                <tr>
+                    <td>
+                        <label for="isbn">ISBN</label>
+                    </td>
+                    <form method="POST" action="/book" enctype="utf-8" id="bookSearch">
+                        <td>
+                            <input type="text" id="isbn" name="isbn" placeholder="바코드를 찍어주세요.">
+                        </td>
+                        <td>
+                            <button type="button" id="searchIsbn">조회</button>
+                        </td>
+                    </form>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="title">제목</label>
+                    </td>
+                    <td>
+                        <!-- null값 체크 -->
+                        <input id="title" name="title" placeholder="자동으로 입력됩니다.">
 
-      <table class="createTable">
-        <tr>
-          <td>
-            <label for="bookCode">ISBN</label>
-          </td>
-          <td>
-            <input type="bookCode" id="bookCode" name="bookCode" placeholder="바코드를 찍어주세요.">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="title">제목</label>
-          </td>
-          <td>
-            <input type="text" id="title" name="title" placeholder="자동으로 입력됩니다.">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="pub">출판사</label>
-          </td>
-          <td>
-            <input type="text" id="pub" name="pub" placeholder="자동으로 입력됩니다.">
-          </td>
-        </tr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="publisher">출판사</label>
+                    </td>
+                    <td>
+                        <input type="text" id="publisher" name="publisher"  placeholder="자동으로 입력됩니다.">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="author">저자</label>
+                    </td>
+                    <td>
+                        <input type="text" id="author" name="author"  placeholder="자동으로 입력됩니다.">
+                    </td>
+                </tr>
 
 
-      </table>
-      <button class="addMemberButton cancel" type="button" onclick="location.href='/'">취소</button>
-      <button class="addMemberButton ok" type="submit">등록</button>
-    </form>
-  </div>
+            </table>
+            <button class="addMemberButton cancel" type="button" onclick="location.href='/'">취소</button>
+            <button class="addMemberButton ok" type="submit">등록</button>
+        </form>
+    </div>
 
 </div>
 
 
 </body>
 <div th:replace="~{./common/sideBar :: sideBarFragment}"></div>
+<div th:replace="~{./common/footer :: footerFragment}"></div>
+
+
+<script th:src="@{/js/booksRegister.js}"></script>
+
 </html>

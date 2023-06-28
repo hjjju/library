@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lagn="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/library.css" th:href="@{/css/library.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../common/sideBar.html" th:href="@{/common/sideBar.html}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <!--    <title>회원등록</title>-->
+</head>
+<div th:replace="~{./common/header :: headerFragment}"></div>
+<div th:replace="~{./common/sideBar :: sideBarFragment}"></div>
+
+<div>
+    <div class="line1"></div>
+    <!--    <div class="textLogo">Ashley-library</div>-->
+    <div class="regiBox">
+        <div class="bookDetail">
+            <!--<form action="/members/new" method="post">-->
+            <table class="bookDetailView">
+                <tr>
+                    <td>
+                        <label for="title">제목</label>
+                    </td>
+
+                    <!-- <td th:text="${memberDetail.name}"></td>-->
+                    <td th:text="${bookDetail.title}" id="title" name="title" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="author">저자</label>
+                    </td>
+                    <td th:text="${bookDetail.author}" id="author" name="title" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="publisher">출판사</label>
+                    </td>
+                    <td th:text="${bookDetail.publisher}" id="publisher" name="publisher" class="form-control"></td>
+                </tr>
+                <!--                    <tr>-->
+                <!--                        <td>-->
+                <!--                            <label for="birth">생년월일</label>-->
+                <!--                        </td>-->
+                <!--                        <td>-->
+                <!--&lt;!&ndash;                            <input type="text" id="birth" name="birth" placeholder="생년월일 8자리">&ndash;&gt;-->
+                <!--                            <h1 th:text="${memberDetail.birth}"></h1>-->
+                <!--                        </td>-->
+                <!--                    </tr>-->
+
+            </table>
+            <!--</form>-->
+            <div class="bookDivisionLine"></div>
+        </div>
+    </div>
+
+</div>
+<div th:replace="~{./common/footer :: footerFragment}"></div>
+
+</html>
