@@ -2,17 +2,18 @@ package ashley.ashley_library.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //db가 아이디를 자동으로 생성해주는것
+    @Column(name = "book_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BOOK_SEQ_GENERATOR") //db가 아이디를 자동으로 생성해주는것
+    @SequenceGenerator(name = "BOOK_SEQ_GENERATOR", sequenceName = "BOOK_SEQ", initialValue = 1, allocationSize = 1)
     private Long id; //아이디식별자,시스템이정하는 아이디
 
     private String title;
@@ -59,6 +60,9 @@ public class Book {
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
+
+
+
 
     @Override
     public String toString() {

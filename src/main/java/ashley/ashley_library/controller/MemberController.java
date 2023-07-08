@@ -1,6 +1,8 @@
 package ashley.ashley_library.controller;
 
+import ashley.ashley_library.domain.Borrow;
 import ashley.ashley_library.domain.Member;
+import ashley.ashley_library.service.BorrowService;
 import ashley.ashley_library.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +21,7 @@ import java.util.List;
 public class MemberController {
 
     private final MemberService memberService;
+
 
     //생성자로 연결해줌
     @Autowired//생성자에 autowired 스프링컨테이너에 있는 memberServcie랑 연결해줌
@@ -55,6 +58,7 @@ public class MemberController {
         Page<Member> memberList = memberService.memberList(pageable, pageNo);
 //        Page<Member> memberList = memberService.memberList(pageable);
 
+//        int nowPage = memberList.getPageable().getPageNumber(); // pageable이 가지고 있는 페이지는 0부터 시작하기때문에 1을 더함
         int nowPage = memberList.getPageable().getPageNumber() + 1; // pageable이 가지고 있는 페이지는 0부터 시작하기때문에 1을 더함
         int startPage = Math.max(nowPage - 4, 1); // 1보다 작은 경우는 1을 반환
         int endPage = Math.min(nowPage + 9, memberList.getTotalPages()); // 전체 페이지보다 많은 경우는 전체 페이지를 반환
@@ -66,15 +70,10 @@ public class MemberController {
         model.addAttribute("endPage", endPage);
         model.addAttribute("totalPage", memberList.getTotalPages());
         model.addAttribute("totalCnt", memberList.getTotalElements());
-        System.out.println("memberList.getTotalElements()"  + memberList.getTotalElements());
+        System.out.println("memberList.getTotalElements()" + memberList.getTotalElements());
         model.addAttribute("pageSize", memberList.getSize());
         System.out.println("size?? " + memberList.getSize());
         return "/members/memberList";
-    }
-
-    @GetMapping("/members/monthlyCheckOut")
-    public String monthlyCheckOut() {
-        return "/members/monthlyCheckOut";
     }
 
 

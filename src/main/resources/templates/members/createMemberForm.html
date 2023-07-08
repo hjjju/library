@@ -28,7 +28,7 @@
                             <label for="name">이름</label>
                         </td>
                         <td>
-                            <input type="text" id="name" name="name" placeholder="이름을입력하세요">
+                            <input type="text" id="name" name="name" placeholder="이름을입력하세요" autofocus>
                         </td>
                     </tr>
                     <tr>
@@ -36,18 +36,9 @@
                             <label for="phone">전화번호</label>
                         </td>
                         <td>
-                            <input type="text" id="phone" name="phone" placeholder="전화번호를입력하세요">
+                            <input type="text" id="phone" name="phone" placeholder="ex)01012345678">
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <label for="birth">생년월일</label>
-                        </td>
-                        <td>
-                            <input type="text" id="birth" name="birth" placeholder="생년월일 8자리">
-                        </td>
-                    </tr>
-
                 </table>
                 <button class="addMemberButton cancel" type="button" onclick="location.href='/'">취소</button>
                 <button class="addMemberButton ok" type="submit">등록</button>

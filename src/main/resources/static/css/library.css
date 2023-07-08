@@ -5,7 +5,7 @@ font-size: 60px;
 position: absolute;
 width: 497px;
 height: 373px;
-left: 390px;
+left: 410px;
 top: 202px;
 background: #FFA7D6;
 cursor: pointer;
@@ -15,7 +15,7 @@ font-size: 60px;
 position: absolute;
 width: 497px;
 height: 373px;
-left: 917px;
+left: 1017px;
 top: 200px;
 cursor: pointer;
 
@@ -59,7 +59,7 @@ background:#FFACB5;
 .line1{
 
 position: absolute;
-width: 1268px;
+width: 1468px;
 height: 0px;
 left: 172px;
 top: 113.5px;
@@ -72,7 +72,7 @@ transform: rotate(0.02deg);
 
 
 position: absolute;
-width: 1263px;
+width: 1463px;
 height: 191px;
 left: 172px;
 top: 789px;
@@ -82,7 +82,7 @@ background: #F5F5F5;
 
 .footAddress{
 position: absolute;
-width: 585px;
+width: 885px;
 height: 19px;
 left: 302px;
 top: 40px;
@@ -99,7 +99,7 @@ color: #000000;
 }
 .bottomLine{
 position: absolute;
-width: 1263px;
+width: 1463px;
 height: 0px;
 left: 172px;
 top: 789px;
@@ -122,7 +122,7 @@ background: #EBF2F5;
 }
 .homeIcon{
 position: absolute;
-left: 1300px;
+left: 1460px;
 right: 3.89%;
 top: 60px;
 bottom: 90.33%;
@@ -164,7 +164,7 @@ margin-top:120px;
     width:100%;
     font-size: 17px;
     line-height: 30px;
-
+    text-align: center;
 }
 
 .tableTitle{
@@ -245,6 +245,7 @@ body > div.memberListContainer > table > thead > tr{
     width:430px;
     height:40px;
  }
+
  #searchIsbn{
    font-size:20px;
  }
@@ -278,6 +279,16 @@ body > div.memberListContainer > table > thead > tr{
 
 
 }
+
+.bgArea > table >thead >  tr {
+    border-collapse: collapse;
+    border-bottom: 1px solid #444444;
+}
+
+
+
+
+
 .bgArea table{
   border-spacing: 12px;
   border-collapse: separate;
@@ -316,4 +327,20 @@ body > div.memberListContainer > table > thead > tr{
   margin: 20px 0px;
   margin-left:-90px;
   width: 700px;
+}
+.bgAreaMonthly{
+   width:1200px;
+   height:600px;
+   margin-left : 400px;
+   margin-top: 160px;
+   border-top: 1px solid #444444;
+   border-collapse: collapse;
+}
+.bgAreaMonthly table{
+  /*border-spacing: 12px;*/
+  border-spacing: 10px 10px;
+  border-collapse: separate;
+}
+.borrowStatusTable{
+   font-size:18px;
 }

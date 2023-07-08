@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
-@Transactional
+//@Transactional
 class BookServiceTest {
 
     @Autowired
@@ -23,10 +23,10 @@ class BookServiceTest {
 
     @Test
     public void  save (){
-        for (int i = 21; i <40; i++) {
+        for (int i = 0; i <40; i++) {
             Book b = new Book();
-            b.setTitle("가나다라" +i);
-            b.setIsbn("97889255549"+i);
+            b.setTitle("스프링" +i);
+            b.setIsbn("978892555"+i);
             bookRepository.save(b);
         }
 

@@ -10,8 +10,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import java.util.List;
-
 @Transactional
 public class BookService {
 
@@ -56,4 +54,12 @@ public class BookService {
         Page<Book> result = bookRepository.findAll(pageable);
         return result;
      }
+
+     public Book findByIsbn(String isbn){
+         Book book = bookRepository.findByIsbn(isbn);
+         return book;
+     }
+
+
+
 }

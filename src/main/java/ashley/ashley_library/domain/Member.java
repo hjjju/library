@@ -1,22 +1,62 @@
 package ashley.ashley_library.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity //jpa가 관리하는 entity
+@Table(name = "member")
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //db가 아이디를 자동으로 생성해주는것
+    @Column(name = "member_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEM_SEQ_GENERATOR") //db가 아이디를 자동으로 생성해주는것
+    @SequenceGenerator(name = "MEM_SEQ_GENERATOR", sequenceName = "MEM_SEQ", initialValue = 1, allocationSize = 1)
     private Long id; //아이디식별자,시스템이정하는 아이디
 
     private String name;
 
-    private int phone;
+    private String phone;
 
 
+
+
+
+
+
+
+    @ManyToMany
+    @JoinTable(name = "MEMBER_BORROW",
+            joinColumns = @JoinColumn(name = "member_id"),
+            inverseJoinColumns = @JoinColumn(name = "B_MEMBER_ID")
+    )
+    private List<Borrow> borrowList = new ArrayList<Borrow>();
+
+    public List<Borrow> getBorrowList() {
+        return borrowList;
+    }
+
+    public void setBorrowList(List<Borrow> borrowList) {
+        this.borrowList = borrowList;
+    }
+
+
+    //조인
+//    @OneToOne
+//    @JoinTable(name = "BORROW",
+//            joinColumns = @JoinColumn(name = "member_id"),
+//            inverseJoinColumns = @JoinColumn(name = "b_member_id"))
+//    private Borrow borrow;
+
+
+//    public Borrow getBorrow() {
+//        return borrow;
+//    }
+//
+//    public void setBorrow(Borrow borrow) {
+//        this.borrow = borrow;
+//    }
 
     public Long getId() {
         return id;
@@ -34,13 +74,20 @@ public class Member {
         this.name = name;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

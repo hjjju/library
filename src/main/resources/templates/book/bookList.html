@@ -80,10 +80,10 @@
                            aria-level="Next"> &gt;</a>
                     </li>
                 </li>
-                <li class="page-item">
+                <li class="page-item" th:classappend="${!bookList.hasNext} ? 'disabled'">
                     <!-- 마지막 페이지 -->
-                    <a class="page-link" th:href="@{/book/bookList/(page=${totalPage})}" aria-level="Last">
-                        >> <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a class="page-link" th:href="@{/book/bookList(page=${endPage})}">
+                        >>
                     </a>
                 </li>
             </ul>

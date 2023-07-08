@@ -11,9 +11,95 @@
 </head>
 <div th:replace="~{./common/header :: headerFragment}"></div>
 <body>
+<div class="bgAreaMonthly">
 
+  <table class="borrowStatusTable">
+    <thead>
+    <tr>
+      <th class="tableTitle">No.</th>
+      <th class="tableTitle">도서명</th>
+      <th class="tableTitle">대여일</th>
+      <th class="tableTitle">반납예정일</th>
+      <th class="tableTitle">반납일</th>
+      <th class="tableTitle">연체일</th>
+      <th class="tableTitle">상태</th>
+      <th class="tableTitle">대여자</th>
+    </tr>
+    <tbody>
+    <tr th:each="borrowList,status : ${borrowList}">
+      <!--          <td th:text="${numStat.count}"></td>-->
+      <td th:text="${(nowPage * 10) - 10 + status.count}"></td>
+      <td th:text="${borrowList.bookTitle}"></td>
+      <td th:text="${borrowList.brDate}"></td>
+      <td th:text="${borrowList.brExpDate}"></td>
+      <td th:text="${borrowList.returnDate}"></td>
+      <td th:text="${borrowList.returnDate}"></td>
+      <!--<td th:text="${borrowList.brStatus}"></td>-->
+      <td th:text="${#strings.equals(borrowList.brStatus,'C')} ? '대여' : '반납' "></td>
+      <td th:text="${borrowList.brName}"></td>
+    </tr>
+    </tbody>
+    </thead>
+
+
+  </table>
+     <div class="pagination justify-content-center">
+         <a href="?page={{previous}}" role="button" class="btn btn-lg bi bi-caret-left-square-fill"></a>
+         <a href="?page={{next}}" role="button" class="btn btn-lg bi bi-caret-right-square-fill"></a>
+     </div>
+
+  <nav th:if="${totalPage != 0}">
+    <div class="container">
+      <ul class="pagination pagination-primary m-4">
+
+        <li class="page-item ">
+          <!-- 첫 페이지로 이동 -->
+          <a class="page-link"
+             th:href="@{/members/monthlyCheckOut(page=1)}"
+             aria-level="First">
+            <span aria-hidden="true"><<<i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+          </a>
+        </li>
+
+        <li class="page-item active">
+          <!-- 이전 페이지 -->
+        <li th:if="${hasPrev} ? 'disabled'">
+          <a class="page-link" th:href="@{/members/monthlyCheckOut(page=${nowPage-1})}"
+             aria-level="Previous"> &lt;</a>
+        <li>
+        </li>
+
+
+        <!-- 페이지 번호 -->
+        <li th:each="page: ${#numbers.sequence(startPage, endPage)}"
+            th:class="(page == ${pageNo}+1) ? 'page-item active'">
+          <a class="page-link" th:text="${page}"
+             th:href="@{/members/monthlyCheckOut(page = ${nowPage +1})}"></a>
+        </li>
+
+        <li class="page-item">
+          <!-- 다음 페이지 -->
+        <li th:if="${hasNext} ? 'disabled'">
+          <a class="page-link"
+             th:href="@{/members/monthlyCheckOut(page=${nowPage+1})}"
+             aria-level="Next"> &gt;</a>
+        </li>
+        </li>
+        <li class="page-item" th:classappend="${!borrowList.hasNext} ? 'disabled'">
+          <!-- 마지막 페이지 -->
+          <a class="page-link" th:href="@{/members/monthlyCheckOut(page=${endPage})}">
+            >>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+</div>
 
 
 </body>
 <div th:replace="~{./common/sideBar :: sideBarFragment}"></div>
+<div th:replace="~{./common/footer :: footerFragment}"></div>
 </html>

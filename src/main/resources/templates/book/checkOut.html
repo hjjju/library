@@ -15,14 +15,14 @@
 <!--<div class="textLogo">Ashley-library</div>-->
 <div class="regiBox">
     <div class="form-group">
-        <form action="/book/checkOut" method="post">
+        <form action="/borrow/checkOut" method="post">
             <table class="checkOutTable">
                 <tr>
                     <td>
                         <label for="isbn">ISBN</label>
                     </td>
                         <td>
-                            <input type="text" id="isbn" name="isbn" placeholder="바코드를 찍어주세요.">
+                            <input type="text" id="isbn" name="isbn" placeholder="바코드를 찍어주세요." autofocus>
                         </td>
 
 
@@ -33,18 +33,18 @@
                     </td>
                     <td>
                         <!-- null값 체크 -->
-                        <input id="phone" name="phone" placeholder="뒷번호 4자리를 입력해주세요.">
-                        <td>
+                        <input id="phone" name="phone" placeholder="핸드폰 번호를 입력해 주세요.">
+                       <!-- <td>
                            <button type="button" id="searchCkPhone">조회</button>
-                       </td>
+                       </td>-->
 
                     </td>
                 </tr>
 
 
             </table>
-            <button class="addMemberButton cancel" type="button" onclick="location.href='/'">취소</button>
-            <button class="addMemberButton ok" type="submit">등록</button>
+            <button class="addMemberButton cancel" type="button" onclick="location.href='/'">Cancel</button>
+            <button class="addMemberButton ok" type="submit">OK</button>
         </form>
     </div>
 

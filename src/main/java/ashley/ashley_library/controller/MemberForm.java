@@ -3,7 +3,7 @@ package ashley.ashley_library.controller;
 public class MemberForm {
 
     private String name;
-    private int phone;
+    private String phone;
 
 
     public String getName() {
@@ -14,11 +14,11 @@ public class MemberForm {
         this.name = name;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }

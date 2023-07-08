@@ -1,12 +1,10 @@
 package ashley.ashley_library.repository;
 
 import ashley.ashley_library.domain.Book;
-import ashley.ashley_library.domain.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 
-import java.util.List;
 import java.util.Optional;
 
 public interface BookRepository {
@@ -19,5 +17,6 @@ public interface BookRepository {
 
     Optional<Book> findById(Long id);
 
+    Book findByIsbn(String isbn);
 
 }

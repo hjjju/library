@@ -17,15 +17,15 @@
 
 <div class="regiBox">
     <div class="form-group">
-        <form action="/book/bookRegistration" method="post">
+        <form action="/borrow/returnBook" method="post">
 
             <table class="createTable">
                 <tr>
                     <td>
-                        <label for="bookCode">ISBN</label>
+                        <label for="isbn">ISBN</label>
                     </td>
                     <td>
-                        <input type="bookCode" id="bookCode" name="bookCode" placeholder="바코드를 찍어주세요.">
+                        <input type="isbn" id="isbn" name="isbn" placeholder="바코드를 찍어주세요." autofocus>
                     </td>
                 </tr>
 
@@ -33,7 +33,7 @@
 
             </table>
             <button class="addMemberButton cancel" type="button" onclick="location.href='/'">취소</button>
-            <button class="addMemberButton ok" type="submit">등록</button>
+            <button class="addMemberButton ok" type="submit">반납</button>
         </form>
     </div>
 

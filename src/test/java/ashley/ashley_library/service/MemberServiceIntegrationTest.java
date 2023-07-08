@@ -97,9 +97,10 @@ class MemberServiceIntegrationTest {
 //        Member m5 = new Member();
 //        m5.setName("member5");
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 1; i < 20; i++) {
             Member m = new Member();
-            m.setName("세종대왕" + i);
+            m.setName("test" + i);
+            m.setPhone("01022323"+i);
             memberRepository.save(m);
         }
 
