@@ -20,12 +20,6 @@ public class Member {
     private String phone;
 
 
-
-
-
-
-
-
     @ManyToMany
     @JoinTable(name = "MEMBER_BORROW",
             joinColumns = @JoinColumn(name = "member_id"),
@@ -40,23 +34,6 @@ public class Member {
     public void setBorrowList(List<Borrow> borrowList) {
         this.borrowList = borrowList;
     }
-
-
-    //조인
-//    @OneToOne
-//    @JoinTable(name = "BORROW",
-//            joinColumns = @JoinColumn(name = "member_id"),
-//            inverseJoinColumns = @JoinColumn(name = "b_member_id"))
-//    private Borrow borrow;
-
-
-//    public Borrow getBorrow() {
-//        return borrow;
-//    }
-//
-//    public void setBorrow(Borrow borrow) {
-//        this.borrow = borrow;
-//    }
 
     public Long getId() {
         return id;
