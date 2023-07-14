@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" type="text/css" media="all"
           href="../static/css/library.css" th:href="@{/css/library.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" media="all"
-          href="../common/sideBar.html" th:href="@{/common/sideBar.html}"/>
+<!--    <link rel="stylesheet" type="text/css" media="all"
+          href="../common/sideBar.html" th:href="@{/common/sideBar.html}"/>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <!--    <title>회원등록</title>-->
 </head>
 <div th:replace="~{./common/header :: headerFragment}"></div>
-<div th:replace="~{./common/sideBar :: sideBarFragment}"></div>
+
 
 <div>
     <div class="line1"></div>
@@ -20,7 +20,7 @@
 
     <div class="regiBox">
         <div class="createMember">
-            <form action="/members/new" method="post">
+            <form action="/members/new" id="createMemberForm" name = "createMemberForm" method="post">
 
                 <table class="createTable memberVer">
                     <tr>
@@ -41,13 +41,15 @@
                     </tr>
                 </table>
                 <button class="addMemberButton cancel" type="button" onclick="location.href='/'">취소</button>
-                <button class="addMemberButton ok" type="submit">등록</button>
+                <!--<button class="addMemberButton ok" type="submit">등록</button>-->
+                <button class="addMemberButton ok" type="button" onclick="joinFormCheck();">등록</button>
         </form>
         </div>
 
     </div>
 
 </div>
+<div th:replace="~{./common/sideBar :: sideBarFragment}"></div>
 <div th:replace="~{./common/footer :: footerFragment}"></div>
-
+<script th:src="@{/js/createMemberJs.js}"></script>
 </html>

@@ -2,9 +2,12 @@ package ashley.ashley_library.repository;
 
 import ashley.ashley_library.domain.Borrow;
 import ashley.ashley_library.domain.Member;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,5 +25,8 @@ public interface MemberRepository {
 
 
     Optional<Member> findByPhone(String phone);
+
+    Member findMemberById(Long id);
+
 
 }

@@ -15,8 +15,10 @@ public class Member {
     @SequenceGenerator(name = "MEM_SEQ_GENERATOR", sequenceName = "MEM_SEQ", initialValue = 1, allocationSize = 1)
     private Long id; //아이디식별자,시스템이정하는 아이디
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "phone")
     private String phone;
 
 

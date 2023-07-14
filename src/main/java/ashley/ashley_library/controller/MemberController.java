@@ -4,6 +4,8 @@ import ashley.ashley_library.domain.Borrow;
 import ashley.ashley_library.domain.Member;
 import ashley.ashley_library.service.BorrowService;
 import ashley.ashley_library.service.MemberService;
+import oracle.ucp.proxy.annotation.Post;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,14 +13,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
+//@RestController
+//@ResponseBody
 public class MemberController {
 
     private final MemberService memberService;
@@ -38,12 +40,9 @@ public class MemberController {
 
     @PostMapping("/members/new")
     public String memberCreate(MemberForm form) {
-        System.out.println("name: " + form.getName() + " " + form.getPhone());
-        System.out.println(form.getName());
         Member member = new Member();
-        member.setName(form.getName());
-        member.setPhone(form.getPhone());
-
+        member.setName(form.getName().trim().replace(" ",""));
+        member.setPhone(form.getPhone().trim().replace(" ",""));
 
         memberService.join(member);
 
@@ -57,14 +56,11 @@ public class MemberController {
         pageNo = (pageNo == 0) ? 0 : (pageNo - 1);
 
         Page<Member> memberList = memberService.memberList(pageable, pageNo);
-//        Page<Member> memberList = memberService.memberList(pageable);
 
-//        int nowPage = memberList.getPageable().getPageNumber(); // pageable이 가지고 있는 페이지는 0부터 시작하기때문에 1을 더함
         int nowPage = memberList.getPageable().getPageNumber() + 1; // pageable이 가지고 있는 페이지는 0부터 시작하기때문에 1을 더함
         int startPage = Math.max(nowPage - 4, 1); // 1보다 작은 경우는 1을 반환
         int endPage = Math.min(nowPage + 9, memberList.getTotalPages()); // 전체 페이지보다 많은 경우는 전체 페이지를 반환
 
-//        model.addAttribute("memberList",memberList.getContent());
         model.addAttribute("memberList", memberList);
         model.addAttribute("nowPage", nowPage);
         model.addAttribute("startPage", startPage);
@@ -83,16 +79,28 @@ public class MemberController {
 
         model.addAttribute("memberDetail", memberService.memberDetail(id));
 
-
         return "/members/memberDetail";
     }
-//    @GetMapping("/members/memberDetail")
-//    public String memberDetail(Model model, Long id) {
-//        model.addAttribute("memberDetail", memberService.memberDetail(id));
-//
-//
-//        return "/mebmers/memberDetail";
-//    }
 
+    @GetMapping("/members/monthlyCheckOut")
+    public String monthlyCheckOut() {
+
+        return "members/monthlyCheckOut";
+    }
+
+    @PostMapping("/members/updateMember")
+    public String updateMember(Member member) {
+
+        //회원정보 수정
+        Member edMember = new Member();
+
+        edMember = memberService.findMemberById(member.getId());
+        edMember.setName(member.getName().trim().replace(" ",""));
+        edMember.setPhone(member.getPhone().trim().replace(" ",""));
+
+        memberService.save(edMember);
+
+        return "redirect:/";
+    }
 
 }

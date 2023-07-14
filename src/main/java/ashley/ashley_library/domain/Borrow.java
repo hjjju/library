@@ -3,7 +3,9 @@ package ashley.ashley_library.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,11 +31,13 @@ public class Borrow {
     @Column(name = "b_member_id")
     private Long bMemberId;
 
+
     @Column(name = "br_date")
     private String brDate;
 
     @Column(name = "br_exp_date")
-    private String brExpDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDateTime brExpDate;
 
     @Column(name = "br_status")
     private String brStatus;
@@ -44,6 +48,16 @@ public class Borrow {
     @Column(name = "br_name")
     private String brName;
 
+    @Column(name = "br_delay" )
+    private int brDelay;
+
+    public int getBrDelay() {
+        return brDelay;
+    }
+
+    public void setBrDelay(int brDelay) {
+        this.brDelay = brDelay;
+    }
 
     public Long getBrId() {
         return brId;
@@ -85,11 +99,11 @@ public class Borrow {
         this.brDate = brDate;
     }
 
-    public String getBrExpDate() {
+    public LocalDateTime getBrExpDate() {
         return brExpDate;
     }
 
-    public void setBrExpDate(String brExpDate) {
+    public void setBrExpDate(LocalDateTime brExpDate) {
         this.brExpDate = brExpDate;
     }
 

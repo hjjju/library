@@ -1,18 +1,14 @@
 package ashley.ashley_library.service;
 
 
-import ashley.ashley_library.domain.Borrow;
 import ashley.ashley_library.domain.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.transaction.annotation.SpringTransactionAnnotationParser;
 import org.springframework.transaction.annotation.Transactional;
 import ashley.ashley_library.repository.MemberRepository;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,6 +41,7 @@ public class MemberService {
         });*/
         memberRepository.findByPhone(member.getPhone()).ifPresent(m -> {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
+//            return "error/error";
         });
     }
 
@@ -89,4 +86,15 @@ public class MemberService {
         return member;
     }
 
+
+    public Member findMemberById(Long id) {
+        Member member = memberRepository.findMemberById(id);
+        return member;
+    }
+
+    public Member save(Member edMember) {
+        Member member =  memberRepository.save(edMember);
+        return member;
+
+    }
 }

@@ -328,7 +328,7 @@ body > div.memberListContainer > table > thead > tr{
   margin-left:-90px;
   width: 700px;
 }
-.bgAreaMonthly{
+.bgCheckOutReturn{
    width:1200px;
    height:600px;
    margin-left : 400px;
@@ -336,11 +336,24 @@ body > div.memberListContainer > table > thead > tr{
    border-top: 1px solid #444444;
    border-collapse: collapse;
 }
-.bgAreaMonthly table{
+.bgCheckOutReturn table{
   /*border-spacing: 12px;*/
   border-spacing: 10px 10px;
   border-collapse: separate;
+  text-align: center;
 }
 .borrowStatusTable{
    font-size:18px;
 }
+.errorPage{
+    width:800px;
+    height:600px;
+    margin-left : 520px;
+    margin-top: 200px;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+    font-size:40px;
+    text-align:center;
+
+}
+

@@ -7,6 +7,8 @@ import ashley.ashley_library.service.BookService;
 import ashley.ashley_library.service.BorrowService;
 import ashley.ashley_library.service.MemberService;
 import org.apache.catalina.util.ToStringUtil;
+import org.apache.ibatis.javassist.Loader;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -17,10 +19,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.swing.tree.DefaultTreeCellEditor;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
 
 @Controller
@@ -72,7 +75,14 @@ public class BorrowController {
         System.out.println(formattedNow);
 
         borrow.setBrDate(formattedNow);
-        borrow.setBrExpDate(String.valueOf(now.plusDays(7)));
+//        borrow.setBrExpDate(String.valueOf(now.plusDays(7)));
+
+//        borrow.setBrExpDate(LocalDateTime.from((now.plusDays(7))));
+
+        LocalDateTime now1 = LocalDateTime.now();
+        System.out.println("Now is " + DateTimeFormatter.ofPattern("yyyy-mm-dd").format(now1.plusDays(7)));
+
+        borrow.setBrExpDate(now1.plusDays(7));
 
 
         System.out.println(borrow.toString());
@@ -112,14 +122,33 @@ public class BorrowController {
         return "redirect:/";//메인으로 돌려보냄
     }
 
-    @GetMapping("/members/monthlyCheckOut")
-    public String monthlyCheckOut(Model model, @RequestParam(required = false, defaultValue = "0", value = "page") int pageNo, @PageableDefault(page = 0, size = 10, sort = "title", direction = Sort.Direction.ASC) Pageable pageable) {
+    @GetMapping("/members/checkOutReturn")
+    public String checkOutReturn(Model model, @RequestParam(required = false, defaultValue = "0", value = "page") int pageNo, @PageableDefault(page = 0, size = 10, sort = "title", direction = Sort.Direction.ASC) Pageable pageable) {
 
         //클라이언트 페이지에서 받은 pageNo과 실제접근 페이지는 다름, page객체는 페이지가 0부터 시작
         pageNo = (pageNo == 0) ? 0 : (pageNo - 1);
 
 
         Page<Borrow> borrowList = borrowService.borrowList(pageable, pageNo);
+
+        //리스트 불러올때마다 연체일 계산
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(now.getClass().getName());
+
+
+        for (Borrow b: borrowList) {
+            System.out.println("getClass " +b.getBrExpDate().getClass().getName());
+
+
+            System.out.println("?? "  + now.compareTo(b.getBrExpDate()));
+
+            if(now.compareTo(b.getBrExpDate()) >0 ){
+                b.setBrDelay(now.compareTo(b.getBrExpDate()));
+            }
+
+
+        }
+
 
 
         //클라이언트 페이지에서 받은 pageNo과 실제접근 페이지는 다름, page객체는 페이지가 0부터 시작
@@ -140,7 +169,16 @@ public class BorrowController {
         model.addAttribute("hasNext", borrowList.hasNext());
 
 
-        return "/members/monthlyCheckOut";
+
+
+//        LocalDate now = LocalDate.now();
+
+        System.out.println(now);
+
+        model.addAttribute("now", now);
+
+
+        return "/members/checkOutReturn";
     }
 
 }
